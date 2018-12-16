@@ -10,6 +10,7 @@ import mongoose from 'mongoose'
 import './config/models'
 
 import staticConverterController from './controllers/staticConverterController'
+import battles from './controllers/Battles'
 
 dotEnv.config()
 
@@ -28,6 +29,10 @@ app.set('trust proxy', 'loopback')
 app.disable('x-powered-by')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+
+app.get('/list', battles.getBattlesList)
+app.get('/count', battles.countBattles)
+app.get('/stats', battles.getStatistics)
 
 connect().then(
     () => {
