@@ -1,4 +1,4 @@
-#Game of Thrones Battle API
+# Game of Thrones Battle API
 
 1) Clone the project
 2) copy `.env.example` to `.env`
