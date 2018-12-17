@@ -4,11 +4,10 @@
   "description": "",
   "main": "lib/app.js",
   "scripts": {
-    "start": "node lib/app",
+    "start": "./node_modules/.bin/babel app --out-dir lib && node lib/app",
     "dev": "nodemon lib/app",
     "build": "./node_modules/.bin/babel app --out-dir lib",
-    "compile": "./node_modules/.bin/babel app --out-dir lib --watch",
-    "postinstall": "./node_modules/.bin/babel app --out-dir lib && node lib/app"
+    "compile": "./node_modules/.bin/babel app --out-dir lib --watch"
   },
   "author": "Arnas Pecelis",
   "license": "ISC",
