@@ -29,9 +29,9 @@ app.get('/search', battles.searchBattles)
 
 connect().then(
     () => {
-        server.listen(process.env.APP_PORT || 8080)
+        server.listen(process.env.PORT || 8080)
         console.log('APP is running!')
-        console.trace('APP reachable url: ' + process.env.APP_PORT)
+        console.trace('APP reachable url: ' + process.env.PORT)
 
         staticConverterController.check()
     },
