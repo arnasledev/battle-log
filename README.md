@@ -9,4 +9,10 @@
 To use remote database change the `.env` parameter `MONGO_CONNECTION` to yours.
 
 ### Example
-You can find working example hosted on [heroku apps](http://google.lt)
+You can find working example hosted on [heroku apps](https://got-api-insta.herokuapp.com/)
+
+### Available routes
+1) `https://got-api-insta.herokuapp.com/list`
+2) `https://got-api-insta.herokuapp.com/stats`
+3) `https://got-api-insta.herokuapp.com/count`
+3) `https://got-api-insta.herokuapp.com/search`
