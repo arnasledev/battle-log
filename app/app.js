@@ -3,9 +3,7 @@ import './config/log'
 
 import dotEnv from 'dotenv'
 import express from 'express'
-import compression from 'compression'
 import http from 'http'
-import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import './config/models'
 
@@ -23,16 +21,10 @@ const connect = () => {
     return mongoose.connect(db, options)
 }
 
-app.enable('trust proxy')
-app.use(compression())
-app.set('trust proxy', 'loopback')
-app.disable('x-powered-by')
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
-
 app.get('/list', battles.getBattlesList)
 app.get('/count', battles.countBattles)
 app.get('/stats', battles.getStatistics)
+app.get('/search', battles.searchBattles)
 
 connect().then(
     () => {

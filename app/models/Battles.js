@@ -7,6 +7,7 @@ const Schema = mongoose.Schema
  */
 
 const schemaDetails = {
+    _id: { type: String },
     name: { type: String, default: '' },
     year: { type: Number, default: 0 },
     battle_number: { type: Number, default: 0 },
@@ -36,11 +37,6 @@ const schemaDetails = {
 const BattleSchema = new Schema(schemaDetails)
 
 /**
- * Virtuals
- */
-
-
-/**
  * Validations
  */
 
@@ -48,32 +44,19 @@ BattleSchema.path('name').required(true, 'Battle name cannot be blank')
 BattleSchema.path('year').required(true, 'Battle year cannot be blank')
 
 
-/**
- * Pre-save hook
- */
-
-
-/**
- * Methods
- */
-
-BattleSchema.methods = {
-
-    /**
-     * Builds search query
-     *
-     * @param params
-     * @returns {Array}
-     */
-
-
-    buildSearchQuery: params => {
-        return []
-    },
-
-    schemaDetails: () => {
-        return schemaDetails
+BattleSchema.statics.buildSearchQuery = (params, availableSearchParams) => {
+    let searchParams = []
+    for (let key in params) {
+        if (availableSearchParams.includes(key)) {
+            if (key === 'king') {
+                searchParams.push({ '$or': [{ attacker_king: params[key] }, { defender_king: params[key] }] })
+            } else {
+                searchParams.push({ [key]: params[key] })
+            }
+        }
     }
+
+    return searchParams
 }
 
-mongoose.model('Battles', BattleSchema)
+mongoose.model('Battles', BattleSchema, 'battles')
