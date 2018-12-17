@@ -7,7 +7,6 @@ const Schema = mongoose.Schema
  */
 
 const schemaDetails = {
-    _id: { type: String },
     name: { type: String, default: '' },
     year: { type: Number, default: 0 },
     battle_number: { type: Number, default: 0 },
