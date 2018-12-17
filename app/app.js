@@ -21,6 +21,7 @@ const connect = () => {
     return mongoose.connect(db, options)
 }
 
+app.get('/', (req, res) => res.send({ success: true }))
 app.get('/list', battles.getBattlesList)
 app.get('/count', battles.countBattles)
 app.get('/stats', battles.getStatistics)
